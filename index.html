@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QFlow - Gestió de Cues | Bon Preu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">bp</div>
+        <nav class="sidebar-nav">
+            <button class="nav-item active" onclick="showPage('dashboard')" title="Dashboard"><i class="fa-solid fa-house"></i></button>
+            <button class="nav-item" onclick="showPage('historic')" title="Històric"><i class="fa-solid fa-chart-simple"></i></button>
+            <button class="nav-item" onclick="showPage('personal')" title="Personal"><i class="fa-solid fa-people-group"></i></button>
+            <button class="nav-item" onclick="showPage('config')" title="Configuració"><i class="fa-solid fa-gear"></i></button>
+        </nav>
+        <div class="sidebar-bottom">
+            <button class="nav-item" title="Ajuda"><i class="fa-solid fa-circle-question"></i></button>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="header-title">
+                    <h1>QFlow</h1>
+                    <span id="page-subtitle">Sistema de Gestió de Cues</span>
+                </div>
+                <button class="store-selector">
+                    <span>📍</span>
+                    H59V · Esclat Hiper Vilafranca
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    Dades en temps real
+                </div>
+                <div class="header-time">Dl 15/12/2025 · 11:45</div>
+                <div class="user-avatar">NC</div>
+            </div>
+        </header>
+        
+        <!-- DASHBOARD PAGE -->
+        <div id="dashboard" class="page active">
+            <div class="content">
+                <!-- Alert -->
+                <div class="alert-banner">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <div class="alert-title">Saturació detectada a Peixateria</div>
+                        <div class="alert-desc">El temps d'espera supera els 8 minuts. Es recomana afegir 1 treballador de reforç.</div>
+                    </div>
+                    <button class="alert-action">Assignar personal</button>
+                </div>
+                
+                <!-- Summary Cards -->
+                <div class="summary-row">
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-card-label">Clients en espera</span>
+                            <div class="summary-card-icon">👥</div>
+                        </div>
+                        <div class="summary-card-value">21</div>
+                        <div class="summary-card-trend trend-up">↑ 12% vs. hora anterior</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-card-label">Temps mig d'espera</span>
+                            <div class="summary-card-icon">⏱️</div>
+                        </div>
+                        <div class="summary-card-value">3.8 min</div>
+                        <div class="summary-card-trend trend-down">↓ 8% vs. hora anterior</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-card-label">Personal actiu</span>
+                            <div class="summary-card-icon">🧑‍💼</div>
+                        </div>
+                        <div class="summary-card-value">11 / 12</div>
+                        <div class="summary-card-trend trend-neutral">1 disponible per reforç</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-card-label">Clients atesos avui</span>
+                            <div class="summary-card-icon">✓</div>
+                        </div>
+                        <div class="summary-card-value">428</div>
+                        <div class="summary-card-trend trend-up">↑ 5% vs. dilluns passat</div>
+                    </div>
+                </div>
+                
+                <!-- Section Header -->
+                <div class="section-header">
+                    <h2 class="section-title">Taulells de Frescos</h2>
+                    <div class="view-toggle">
+                        <button class="toggle-btn active">Targetes</button>
+                        <button class="toggle-btn">Llista</button>
+                    </div>
+                </div>
+                
+                <!-- Taulells Grid -->
+                <div class="taulells-grid">
+                    <!-- Peixateria -->
+                    <div class="taulell-card alert">
+                        <div class="taulell-header">
+                            <div class="taulell-info">
+                                <div class="taulell-icon" style="color: #3B82F6;"><i class="fa-solid fa-fish"></i></div>
+                                <div>
+                                    <div class="taulell-name">Peixateria</div>
+                                    <div class="taulell-code">PEIX-01</div>
+                                </div>
+                            </div>
+                            <span class="status-pill red">Saturat</span>
+                        </div>
+                        <div class="taulell-body">
+                            <div class="time-display critical">
+                                <div class="time-value">~9 min</div>
+                                <div class="time-label">Temps d'espera estimat</div>
+                            </div>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <div class="metric-value">47</div>
+                                    <div class="metric-label">Torn actual</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">56</div>
+                                    <div class="metric-label">Últim emès</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">9</div>
+                                    <div class="metric-label">A la cua</div>
+                                </div>
+                            </div>
+                            <div class="workers-section">
+                                <div class="workers-header">
+                                    <span class="workers-label">Personal al taulell</span>
+                                    <span class="workers-count">2 de 3</span>
+                                </div>
+                                <div class="workers-avatars">
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">MG</span>
+                                        Maria G.
+                                    </div>
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">JP</span>
+                                        Jordi P.
+                                    </div>
+                                    <button class="add-worker-btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carnisseria -->
+                    <div class="taulell-card">
+                        <div class="taulell-header">
+                            <div class="taulell-info">
+                                <div class="taulell-icon" style="color: var(--bp-granate);"><i class="fa-solid fa-drumstick-bite"></i></div>
+                                <div>
+                                    <div class="taulell-name">Carnisseria</div>
+                                    <div class="taulell-code">CARN-01</div>
+                                </div>
+                            </div>
+                            <span class="status-pill yellow">Moderat</span>
+                        </div>
+                        <div class="taulell-body">
+                            <div class="time-display warning">
+                                <div class="time-value">~5 min</div>
+                                <div class="time-label">Temps d'espera estimat</div>
+                            </div>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <div class="metric-value">89</div>
+                                    <div class="metric-label">Torn actual</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">94</div>
+                                    <div class="metric-label">Últim emès</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">5</div>
+                                    <div class="metric-label">A la cua</div>
+                                </div>
+                            </div>
+                            <div class="workers-section">
+                                <div class="workers-header">
+                                    <span class="workers-label">Personal al taulell</span>
+                                    <span class="workers-count">2 de 2</span>
+                                </div>
+                                <div class="workers-avatars">
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">AM</span>
+                                        Anna M.
+                                    </div>
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">PL</span>
+                                        Pere L.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Xarcuteria -->
+                    <div class="taulell-card">
+                        <div class="taulell-header">
+                            <div class="taulell-info">
+                                <div class="taulell-icon" style="color: #F59E0B;"><i class="fa-solid fa-cheese"></i></div>
+                                <div>
+                                    <div class="taulell-name">Xarcuteria</div>
+                                    <div class="taulell-code">XARC-01</div>
+                                </div>
+                            </div>
+                            <span class="status-pill green">Fluid</span>
+                        </div>
+                        <div class="taulell-body">
+                            <div class="time-display">
+                                <div class="time-value">~2 min</div>
+                                <div class="time-label">Temps d'espera estimat</div>
+                            </div>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <div class="metric-value">124</div>
+                                    <div class="metric-label">Torn actual</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">127</div>
+                                    <div class="metric-label">Últim emès</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">3</div>
+                                    <div class="metric-label">A la cua</div>
+                                </div>
+                            </div>
+                            <div class="workers-section">
+                                <div class="workers-header">
+                                    <span class="workers-label">Personal al taulell</span>
+                                    <span class="workers-count">3 de 3</span>
+                                </div>
+                                <div class="workers-avatars">
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">MS</span>
+                                        Marta S.
+                                    </div>
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">CR</span>
+                                        Carles R.
+                                    </div>
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">LT</span>
+                                        Laia T.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rostisseria -->
+                    <div class="taulell-card">
+                        <div class="taulell-header">
+                            <div class="taulell-info">
+                                <div class="taulell-icon" style="color: #EF4444;"><i class="fa-solid fa-fire-burner"></i></div>
+                                <div>
+                                    <div class="taulell-name">Rostisseria</div>
+                                    <div class="taulell-code">ROST-01</div>
+                                </div>
+                            </div>
+                            <span class="status-pill green">Fluid</span>
+                        </div>
+                        <div class="taulell-body">
+                            <div class="time-display">
+                                <div class="time-value">~1 min</div>
+                                <div class="time-label">Temps d'espera estimat</div>
+                            </div>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <div class="metric-value">67</div>
+                                    <div class="metric-label">Torn actual</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">68</div>
+                                    <div class="metric-label">Últim emès</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">1</div>
+                                    <div class="metric-label">A la cua</div>
+                                </div>
+                            </div>
+                            <div class="workers-section">
+                                <div class="workers-header">
+                                    <span class="workers-label">Personal al taulell</span>
+                                    <span class="workers-count">2 de 2</span>
+                                </div>
+                                <div class="workers-avatars">
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">SF</span>
+                                        Sandra F.
+                                    </div>
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">RB</span>
+                                        Ramon B.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fleca -->
+                    <div class="taulell-card">
+                        <div class="taulell-header">
+                            <div class="taulell-info">
+                                <div class="taulell-icon" style="color: #8B5CF6;"><i class="fa-solid fa-bread-slice"></i></div>
+                                <div>
+                                    <div class="taulell-name">Fleca</div>
+                                    <div class="taulell-code">FLEC-01</div>
+                                </div>
+                            </div>
+                            <span class="status-pill green">Fluid</span>
+                        </div>
+                        <div class="taulell-body">
+                            <div class="time-display">
+                                <div class="time-value">~2 min</div>
+                                <div class="time-label">Temps d'espera estimat</div>
+                            </div>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <div class="metric-value">83</div>
+                                    <div class="metric-label">Torn actual</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">86</div>
+                                    <div class="metric-label">Últim emès</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">3</div>
+                                    <div class="metric-label">A la cua</div>
+                                </div>
+                            </div>
+                            <div class="workers-section">
+                                <div class="workers-header">
+                                    <span class="workers-label">Personal al taulell</span>
+                                    <span class="workers-count">2 de 2</span>
+                                </div>
+                                <div class="workers-avatars">
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">ER</span>
+                                        Elena R.
+                                    </div>
+                                    <div class="worker-avatar">
+                                        <span class="worker-avatar-circle">JM</span>
+                                        Joan M.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-legend">
+                    <div class="legend-item">
+                        <div class="legend-dot green"></div>
+                        Fluid (0-3 min)
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot yellow"></div>
+                        Moderat (3-6 min)
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot red"></div>
+                        Saturat (+6 min)
+                    </div>
+                </div>
+                <div class="footer-info">
+                    QFlow v1.0 · Proposta BP Talent 4.0 · Pau Bosch, Joan Soler, Gisela Torné
+                </div>
+            </footer>
+        </div>
+        
+        <!-- ================ -->
+        <!-- HISTÒRIC PAGE -->
+        <!-- ================ -->
+        <div id="historic" class="page">
+            <div class="content">
+                <!-- Filters -->
+                <div class="section-header">
+                    <h2 class="section-title">Anàlisi Històric</h2>
+                    <div class="date-filter">
+                        <input type="date" class="date-input" value="2025-12-09">
+                        <span style="color: var(--bp-gray-400);">→</span>
+                        <input type="date" class="date-input" value="2025-12-15">
+                        <button class="filter-btn">Aplicar</button>
+                    </div>
+                </div>
+                
+                <!-- Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <span class="chart-title">Temps mig d'espera per secció (últims 7 dies)</span>
+                        <div class="chart-legend">
+                            <div class="chart-legend-item">
+                                <div class="chart-legend-color" style="background: #3B82F6;"></div>
+                                Peixateria
+                            </div>
+                            <div class="chart-legend-item">
+                                <div class="chart-legend-color" style="background: var(--bp-granate);"></div>
+                                Carnisseria
+                            </div>
+                            <div class="chart-legend-item">
+                                <div class="chart-legend-color" style="background: #10B981;"></div>
+                                Xarcuteria
+                            </div>
+                            <div class="chart-legend-item">
+                                <div class="chart-legend-color" style="background: #EF4444;"></div>
+                                Rostisseria
+                            </div>
+                            <div class="chart-legend-item">
+                                <div class="chart-legend-color" style="background: #8B5CF6;"></div>
+                                Fleca
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <div class="chart-grid">
+                            <div class="chart-grid-line" data-value="10 min"></div>
+                            <div class="chart-grid-line" data-value="8 min"></div>
+                            <div class="chart-grid-line" data-value="6 min"></div>
+                            <div class="chart-grid-line" data-value="4 min"></div>
+                            <div class="chart-grid-line" data-value="2 min"></div>
+                            <div class="chart-grid-line" data-value="0 min"></div>
+                        </div>
+                        <div class="chart-bars">
+                            <div class="chart-bar-group">
+                                <div class="chart-bar-container">
+                                    <div class="chart-bar peix" style="height: 85px;"></div>
+                                    <div class="chart-bar carn" style="height: 65px;"></div>
+                                    <div class="chart-bar xarc" style="height: 40px;"></div>
+                                    <div class="chart-bar rost" style="height: 25px;"></div>
+                                    <div class="chart-bar flec" style="height: 35px;"></div>
+                                </div>
+                                <span class="chart-bar-label">Dl 9</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="chart-bar-container">
+                                    <div class="chart-bar peix" style="height: 70px;"></div>
+                                    <div class="chart-bar carn" style="height: 55px;"></div>
+                                    <div class="chart-bar xarc" style="height: 35px;"></div>
+                                    <div class="chart-bar rost" style="height: 20px;"></div>
+                                    <div class="chart-bar flec" style="height: 30px;"></div>
+                                </div>
+                                <span class="chart-bar-label">Dt 10</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="chart-bar-container">
+                                    <div class="chart-bar peix" style="height: 75px;"></div>
+                                    <div class="chart-bar carn" style="height: 60px;"></div>
+                                    <div class="chart-bar xarc" style="height: 38px;"></div>
+                                    <div class="chart-bar rost" style="height: 22px;"></div>
+                                    <div class="chart-bar flec" style="height: 32px;"></div>
+                                </div>
+                                <span class="chart-bar-label">Dc 11</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="chart-bar-container">
+                                    <div class="chart-bar peix" style="height: 80px;"></div>
+                                    <div class="chart-bar carn" style="height: 58px;"></div>
+                                    <div class="chart-bar xarc" style="height: 42px;"></div>
+                                    <div class="chart-bar rost" style="height: 28px;"></div>
+                                    <div class="chart-bar flec" style="height: 38px;"></div>
+                                </div>
+                                <span class="chart-bar-label">Dj 12</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="chart-bar-container">
+                                    <div class="chart-bar peix" style="height: 110px;"></div>
+                                    <div class="chart-bar carn" style="height: 85px;"></div>
+                                    <div class="chart-bar xarc" style="height: 55px;"></div>
+                                    <div class="chart-bar rost" style="height: 35px;"></div>
+                                    <div class="chart-bar flec" style="height: 50px;"></div>
+                                </div>
+                                <span class="chart-bar-label">Dv 13</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="chart-bar-container">
+                                    <div class="chart-bar peix" style="height: 130px;"></div>
+                                    <div class="chart-bar carn" style="height: 100px;"></div>
+                                    <div class="chart-bar xarc" style="height: 70px;"></div>
+                                    <div class="chart-bar rost" style="height: 45px;"></div>
+                                    <div class="chart-bar flec" style="height: 60px;"></div>
+                                </div>
+                                <span class="chart-bar-label">Ds 14</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="chart-bar-container">
+                                    <div class="chart-bar peix" style="height: 90px;"></div>
+                                    <div class="chart-bar carn" style="height: 70px;"></div>
+                                    <div class="chart-bar xarc" style="height: 45px;"></div>
+                                    <div class="chart-bar rost" style="height: 30px;"></div>
+                                    <div class="chart-bar flec" style="height: 40px;"></div>
+                                </div>
+                                <span class="chart-bar-label">Dg 15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-title">📊 Resum del període</div>
+                        <div class="stat-table">
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">Total clients atesos</span>
+                                <span class="stat-table-value">2.847</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">Temps mig d'espera global</span>
+                                <span class="stat-table-value">4.3 min</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">Pic màxim d'espera</span>
+                                <span class="stat-table-value">12.4 min (Ds 11:30)</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">Alertes de saturació</span>
+                                <span class="stat-table-value" style="color: var(--status-red);">14</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-title">🏆 Rendiment per secció</div>
+                        <div class="stat-table">
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">
+                                    <i class="fa-solid fa-fish" style="color: #3B82F6;"></i> Peixateria
+                                </span>
+                                <span class="stat-table-value">6.2 min avg</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">
+                                    <i class="fa-solid fa-drumstick-bite" style="color: var(--bp-granate);"></i> Carnisseria
+                                </span>
+                                <span class="stat-table-value">4.8 min avg</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">
+                                    <i class="fa-solid fa-cheese" style="color: #F59E0B;"></i> Xarcuteria
+                                </span>
+                                <span class="stat-table-value">3.1 min avg</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">
+                                    <i class="fa-solid fa-fire-burner" style="color: #EF4444;"></i> Rostisseria
+                                </span>
+                                <span class="stat-table-value">2.5 min avg</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">
+                                    <i class="fa-solid fa-bread-slice" style="color: #8B5CF6;"></i> Fleca
+                                </span>
+                                <span class="stat-table-value">2.8 min avg</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-title">⏰ Franges horàries crítiques</div>
+                        <div class="stat-table">
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">Matí</span>
+                                <span class="stat-table-value">11:00 - 13:00</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">Tarda</span>
+                                <span class="stat-table-value">18:00 - 20:00</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">Dia més saturat</span>
+                                <span class="stat-table-value">Dissabte</span>
+                            </div>
+                            <div class="stat-table-row">
+                                <span class="stat-table-label">Dia més fluid</span>
+                                <span class="stat-table-value">Dimarts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ================ -->
+        <!-- PERSONAL PAGE -->
+        <!-- ================ -->
+        <div id="personal" class="page">
+            <div class="content">
+                <div class="personal-header">
+                    <div class="search-box">
+                        <span>🔍</span>
+                        <input type="text" placeholder="Buscar treballador...">
+                    </div>
+                    <button class="add-btn">
+                        <span>+</span>
+                        Afegir treballador
+                    </button>
+                </div>
+                
+                <!-- Summary Cards -->
+                <div class="summary-row">
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-card-label">Total personal frescos</span>
+                            <div class="summary-card-icon">👥</div>
+                        </div>
+                        <div class="summary-card-value">16</div>
+                        <div class="summary-card-trend trend-neutral">Capacitat actual</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-card-label">Actius ara</span>
+                            <div class="summary-card-icon">✓</div>
+                        </div>
+                        <div class="summary-card-value">11</div>
+                        <div class="summary-card-trend trend-up">Al taulell</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-card-label">En pausa</span>
+                            <div class="summary-card-icon">☕</div>
+                        </div>
+                        <div class="summary-card-value">2</div>
+                        <div class="summary-card-trend trend-neutral">Descans</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-card-label">Disponibles</span>
+                            <div class="summary-card-icon">🔄</div>
+                        </div>
+                        <div class="summary-card-value">3</div>
+                        <div class="summary-card-trend trend-up">Per reforç</div>
+                    </div>
+                </div>
+                
+                <div class="section-header">
+                    <h2 class="section-title">Equip de Frescos</h2>
+                    <div class="view-toggle">
+                        <button class="toggle-btn active">Tots</button>
+                        <button class="toggle-btn">Actius</button>
+                        <button class="toggle-btn">Disponibles</button>
+                    </div>
+                </div>
+                
+                <div class="personal-grid">
+                    <!-- Personal cards -->
+                    <div class="personal-card" data-section="peixateria" data-status="active">
+                        <div class="personal-avatar">MG</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Maria García</div>
+                            <div class="personal-role">Especialista Peixateria</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">47</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">3.2 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-fish" style="color: #3B82F6;"></i> Peixateria</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="peixateria" data-status="active">
+                        <div class="personal-avatar">JP</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Jordi Puig</div>
+                            <div class="personal-role">Especialista Peixateria</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">42</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">3.5 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-fish" style="color: #3B82F6;"></i> Peixateria</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="carnisseria" data-status="active">
+                        <div class="personal-avatar">AM</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Anna Martí</div>
+                            <div class="personal-role">Especialista Carnisseria</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">58</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">2.8 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-drumstick-bite" style="color: var(--bp-granate);"></i> Carnisseria</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="carnisseria" data-status="active">
+                        <div class="personal-avatar">PL</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Pere López</div>
+                            <div class="personal-role">Especialista Carnisseria</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">52</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">3.0 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-drumstick-bite" style="color: var(--bp-granate);"></i> Carnisseria</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="xarcuteria" data-status="active">
+                        <div class="personal-avatar">MS</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Marta Sala</div>
+                            <div class="personal-role">Especialista Xarcuteria</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">65</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">2.4 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-cheese" style="color: #F59E0B;"></i> Xarcuteria</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="rostisseria" data-status="active">
+                        <div class="personal-avatar">SF</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Sandra Fernández</div>
+                            <div class="personal-role">Especialista Rostisseria</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">45</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">2.2 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-fire-burner" style="color: #EF4444;"></i> Rostisseria</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="rostisseria" data-status="active">
+                        <div class="personal-avatar">RB</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Ramon Bonet</div>
+                            <div class="personal-role">Especialista Rostisseria</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">41</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">2.4 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-fire-burner" style="color: #EF4444;"></i> Rostisseria</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="polivalent" data-status="break">
+                        <div class="personal-avatar">CR</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Carles Roca</div>
+                            <div class="personal-role">Polivalent Frescos</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">0</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">- min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge break">Pausa</span>
+                            <span class="personal-section"><i class="fa-solid fa-mug-hot" style="color: var(--bp-gray-500);"></i> Descans</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="polivalent" data-status="available">
+                        <div class="personal-avatar">LV</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Laura Vila</div>
+                            <div class="personal-role">Polivalent Frescos</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">38</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">2.9 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge offline">Disponible</span>
+                            <span class="personal-section"><i class="fa-solid fa-rotate" style="color: var(--bp-gray-500);"></i> Reforç</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="peixateria" data-status="available">
+                        <div class="personal-avatar">XT</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Xavier Torres</div>
+                            <div class="personal-role">Especialista Peixateria</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">0</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">- min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge offline">Disponible</span>
+                            <span class="personal-section"><i class="fa-solid fa-rotate" style="color: var(--bp-gray-500);"></i> Reforç</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="fleca" data-status="active">
+                        <div class="personal-avatar">ER</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Elena Rius</div>
+                            <div class="personal-role">Especialista Fleca</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">54</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">2.6 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-bread-slice" style="color: #8B5CF6;"></i> Fleca</span>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card" data-section="fleca" data-status="active">
+                        <div class="personal-avatar">JM</div>
+                        <div class="personal-info">
+                            <div class="personal-name">Joan Mestres</div>
+                            <div class="personal-role">Especialista Fleca</div>
+                            <div class="personal-stats">
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">48</span>
+                                    <span class="personal-stat-label">Atesos avui</span>
+                                </div>
+                                <div class="personal-stat">
+                                    <span class="personal-stat-value">2.8 min</span>
+                                    <span class="personal-stat-label">Temps mig</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personal-status">
+                            <span class="status-badge active">Actiu</span>
+                            <span class="personal-section"><i class="fa-solid fa-bread-slice" style="color: #8B5CF6;"></i> Fleca</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CONFIGURACIÓ PAGE -->
+        <div id="config" class="page">
+            <div class="content">
+                <div class="section-header" style="margin-bottom: 24px;">
+                    <h2 class="section-title">Configuració del Sistema</h2>
+                </div>
+                
+                <div class="config-layout">
+                    <nav class="config-nav">
+                        <button class="config-nav-item">
+                            <i class="fa-solid fa-bell"></i>
+                            Alertes
+                        </button>
+                    </nav>                    
+                    <div class="config-content">                        
+                        <div class="config-section">
+                            <h3 class="config-section-title">Notificacions</h3>
+                            <p class="config-section-desc">Configura com i quan rebre alertes de saturació</p>
+                            
+                            <div class="config-row">
+                                <div class="config-label">
+                                    <span class="config-label-title">Alertes al dashboard</span>
+                                    <span class="config-label-desc">Mostra alertes visuals quan hi ha saturació</span>
+                                </div>
+                                <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                            </div>
+                            
+                            <div class="config-row">
+                                <div class="config-label">
+                                    <span class="config-label-title">Notificació per correu</span>
+                                    <span class="config-label-desc">Envia email al gerent en cas de saturació</span>
+                                </div>
+                                <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                            </div>
+                            
+                            <div class="config-row">
+                                <div class="config-label">
+                                    <span class="config-label-title">Alerta sonora</span>
+                                    <span class="config-label-desc">Reprodueix un so quan hi ha saturació crítica</span>
+                                </div>
+                                <div class="toggle-switch" onclick="this.classList.toggle('active')"></div>
+                            </div>
+                        </div>
+                        <button class="save-btn">
+                            <span>💾</span>
+                            Desar canvis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modal: Afegir Treballador -->
+    <div class="modal-overlay" id="modal-add-worker">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Assignar treballador</h3>
+                <button class="modal-close" onclick="closeModal('modal-add-worker')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 14px; color: var(--bp-gray-600); margin-bottom: 16px;">Selecciona un treballador disponible per afegir al taulell de <strong id="modal-section-name">Peixateria</strong>:</p>
+                <div class="worker-select-list" id="available-workers">
+                    <div class="worker-select-item" onclick="selectWorker(this)">
+                        <div class="worker-select-avatar">XT</div>
+                        <div class="worker-select-info">
+                            <div class="worker-select-name">Xavier Torres</div>
+                            <div class="worker-select-role">Especialista Peixateria</div>
+                        </div>
+                        <div class="worker-select-check"><i class="fa-solid fa-check"></i></div>
+                    </div>
+                    <div class="worker-select-item" onclick="selectWorker(this)">
+                        <div class="worker-select-avatar">LV</div>
+                        <div class="worker-select-info">
+                            <div class="worker-select-name">Laura Vila</div>
+                            <div class="worker-select-role">Polivalent Frescos</div>
+                        </div>
+                        <div class="worker-select-check"><i class="fa-solid fa-check"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('modal-add-worker')">Cancel·lar</button>
+                <button class="btn btn-primary" onclick="confirmAddWorker()">Assignar</button>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container" id="toast-container"></div>
+    
+   <script src="script.js"></script>
+</body>
+</html>
